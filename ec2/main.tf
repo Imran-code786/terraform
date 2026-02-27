@@ -1,17 +1,17 @@
-data "aws_ami" "rocky8" {
+data "aws_ami" "centos8" {
   most_recent = true
-  owners      = ["679593333241"]
+  owners      = ["950538586636"]
 
   filter {
     name   = "name"
-    values = ["Rocky-8-ec2-*x86_64*"]
+    values = ["Centos-8-DevOps-Practice*"]
   }
 }
 
 resource "aws_instance" "rocky8_instances" {
   for_each = var.instances
 
-  ami           = data.aws_ami.rocky8.id
+  ami           = data.aws_ami.centos8.id
   instance_type = each.value
   key_name      = var.key_name
 
